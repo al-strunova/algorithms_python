@@ -11,7 +11,7 @@
 import cProfile
 
 
-def solution1(n):
+def solution1(n, pos):
     list_n = [i for i in range(n)]
     list_n[1] = 0
     for x in range(2, n):
@@ -20,11 +20,12 @@ def solution1(n):
             while j < n:
                 list_n[j] = 0
                 j += x
-    return [i for i in list_n if i != 0]
+    results = [i for i in list_n if i != 0]
+    return results[pos]
 
 
 # ******************** Второе решение — без использования «Решета Эратосфена» ********************
-def solution2(n):
+def solution2(n, pos):
     results = []
     for i in range(2, n + 1):
         for j in range(2, i):
@@ -32,7 +33,7 @@ def solution2(n):
                 break
         else:
             results.append(i)
-    return results
+    return results[pos]
 
 # ******************** Первое решение ********************
 # python -m timeit -n 1000 -s "import les_4_task_2" "les_4_task_2.solution1(10)"
